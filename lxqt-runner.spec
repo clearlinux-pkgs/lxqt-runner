@@ -6,11 +6,11 @@
 #
 Name     : lxqt-runner
 Version  : 0.14.1
-Release  : 3
-URL      : https://downloads.lxqt.org/downloads/lxqt-runner/0.14.1/lxqt-runner-0.14.1.tar.xz
-Source0  : https://downloads.lxqt.org/downloads/lxqt-runner/0.14.1/lxqt-runner-0.14.1.tar.xz
-Source99 : https://downloads.lxqt.org/downloads/lxqt-runner/0.14.1/lxqt-runner-0.14.1.tar.xz.asc
-Summary  : The LXQt application launcher
+Release  : 4
+URL      : https://github.com/lxqt/lxqt-runner/releases/download/0.14.1/lxqt-runner-0.14.1.tar.xz
+Source0  : https://github.com/lxqt/lxqt-runner/releases/download/0.14.1/lxqt-runner-0.14.1.tar.xz
+Source1  : https://github.com/lxqt/lxqt-runner/releases/download/0.14.1/lxqt-runner-0.14.1.tar.xz.asc
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: lxqt-runner-bin = %{version}-%{release}
@@ -19,11 +19,14 @@ Requires: lxqt-runner-license = %{version}-%{release}
 Requires: lxqt-runner-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : kwindowsystem-dev
+BuildRequires : liblxqt-data
 BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
 BuildRequires : lxqt-globalkeys-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(muparser)
+BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
 
 %description
@@ -67,24 +70,30 @@ man components for the lxqt-runner package.
 
 %prep
 %setup -q -n lxqt-runner-0.14.1
+cd %{_builddir}/lxqt-runner-0.14.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1551236877
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1598296010
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551236877
+export SOURCE_DATE_EPOCH=1598296010
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-runner
-cp LICENSE %{buildroot}/usr/share/package-licenses/lxqt-runner/LICENSE
+cp %{_builddir}/lxqt-runner-0.14.1/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-runner/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -141,7 +150,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/lxqt-runner/LICENSE
+/usr/share/package-licenses/lxqt-runner/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 
 %files man
 %defattr(0644,root,root,0755)
