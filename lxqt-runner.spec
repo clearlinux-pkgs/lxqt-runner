@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : lxqt-runner
-Version  : 0.16.0
-Release  : 6
-URL      : https://github.com/lxqt/lxqt-runner/releases/download/0.16.0/lxqt-runner-0.16.0.tar.xz
-Source0  : https://github.com/lxqt/lxqt-runner/releases/download/0.16.0/lxqt-runner-0.16.0.tar.xz
-Source1  : https://github.com/lxqt/lxqt-runner/releases/download/0.16.0/lxqt-runner-0.16.0.tar.xz.asc
+Version  : 0.17.0
+Release  : 7
+URL      : https://github.com/lxqt/lxqt-runner/releases/download/0.17.0/lxqt-runner-0.17.0.tar.xz
+Source0  : https://github.com/lxqt/lxqt-runner/releases/download/0.17.0/lxqt-runner-0.17.0.tar.xz
+Source1  : https://github.com/lxqt/lxqt-runner/releases/download/0.17.0/lxqt-runner-0.17.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -20,7 +20,6 @@ Requires: lxqt-runner-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kwindowsystem-dev
-BuildRequires : liblxqt-data
 BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
 BuildRequires : lxqt-globalkeys-dev
@@ -69,15 +68,15 @@ man components for the lxqt-runner package.
 
 
 %prep
-%setup -q -n lxqt-runner-0.16.0
-cd %{_builddir}/lxqt-runner-0.16.0
+%setup -q -n lxqt-runner-0.17.0
+cd %{_builddir}/lxqt-runner-0.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604543543
+export SOURCE_DATE_EPOCH=1618512203
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +89,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604543543
+export SOURCE_DATE_EPOCH=1618512203
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-runner
-cp %{_builddir}/lxqt-runner-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-runner/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/lxqt-runner-0.17.0/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-runner/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -110,6 +109,7 @@ popd
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_ar.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_arn.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_ast.qm
+/usr/share/lxqt/translations/lxqt-runner/lxqt-runner_bg.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_ca.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_cs.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_cy.qm
@@ -119,6 +119,7 @@ popd
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_eo.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_es.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_es_VE.qm
+/usr/share/lxqt/translations/lxqt-runner/lxqt-runner_et.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_eu.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_fi.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_fr.qm
@@ -139,8 +140,8 @@ popd
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_pt_BR.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_ro_RO.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_ru.qm
+/usr/share/lxqt/translations/lxqt-runner/lxqt-runner_si.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_sk.qm
-/usr/share/lxqt/translations/lxqt-runner/lxqt-runner_sk_SK.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_sl.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_sr@latin.qm
 /usr/share/lxqt/translations/lxqt-runner/lxqt-runner_sr_BA.qm
