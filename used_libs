@@ -6,8 +6,8 @@ libQt5Xdg.so.3
 libQt5Xml.so.5
 libc.so.6
 libgcc_s.so.1
-liblxqt-globalkeys-ui.so.0
-liblxqt-globalkeys.so.0
-liblxqt.so.0
+liblxqt-globalkeys-ui.so.1
+liblxqt-globalkeys.so.1
+liblxqt.so.1
 libmuparser.so.2
 libstdc++.so.6
